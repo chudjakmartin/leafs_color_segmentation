@@ -39,7 +39,7 @@ def map_colors(pixel_classes, class_colors_to_display):
     Output
     - out_image: np.array of shape (im_height, im_width, 3), where 3 stands for 3 RGB channels
     """
-    out_image = [class_colors_to_display[pixel_class] for row in im_input for pixel_classes in row]
+    out_image = [class_colors_to_display[pixel_class] for row in pixel_classes for pixel_class in row]
     return out_image
 
 
@@ -110,5 +110,38 @@ def calculate_image_statistics(pixel_classes_im_shape, colors_base_list, n_green
     green_ratio = group_counts_dict[1] / (group_counts_dict[1] + group_counts_dict[2])
     leaf_ratio = (group_counts_dict[1] + group_counts_dict[2]) / (group_counts_dict[0] + group_counts_dict[1] + group_counts_dict[2])
     green_pct = round(green_ratio * 100)
-    green_class = n_green_orders - int(green_pct // (int(100 / n_green_orders)))
+    # green_class = n_green_orders - int(green_pct // (int(100 / n_green_orders)))
+    green_class = get_green_class(green_pct)
     return green_ratio, leaf_ratio, green_class
+
+
+def get_green_class(green_pct):
+    """
+    Assigns green class to green_pct based on rules below
+    
+    Inupt
+    - green_pct: float, <0,100> describes what portion of leaf is green
+    
+    Output
+    - green_class: int, 1-7 describing portion part of leaf is green
+    """
+    green_class = -1
+    brown_pct = 100 - green_pct
+    
+    if brown_pct >= 0 and brown_pct < 2:
+        green_class = 0
+    elif brown_pct >= 2 and brown_pct < 5:
+        green_class = 1
+    elif brown_pct >= 5 and brown_pct < 10:
+        green_class = 2
+    elif brown_pct >= 10 and brown_pct < 25:
+        green_class = 3
+    elif brown_pct >= 25 and brown_pct < 50:
+        green_class = 4
+    elif brown_pct >= 50 and brown_pct < 75:
+        green_class = 5
+    elif brown_pct >= 75 and brown_pct < 98:
+        green_class = 6
+    elif brown_pct >= 98 and brown_pct <= 100:
+        green_class = 7
+    return green_class
