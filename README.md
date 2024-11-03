@@ -3,8 +3,17 @@ This repository contains code for the identification of healthy and rooted regio
 ![sample_leaf_segmentation](images_for_readme/leaf_sample_image.PNG)
 
 # Algorithm description
-For each pixel, it calculates distances to each of predefined colors.
-For simplicity, it is implemented using K-means algorithm, but we only use K-means algorithm to calculate distances. We do not use k-means algorithm to determine cluster centers.
+Each image is represented by the grid (matrix) of pixels. Each pixel is a RGB-triplet of numbers from the interval <0, 255>. Any color, represented by it’s RGB-triplet is a point in 3D Euclidean space. Therefore Euclidean distances between any two colors (each represented by it’s RGB-triplet) can be calculated and understood as a distance between these colors. 
+We developed an algorithm for automatic segmentation of green and brown parts of a leaf. The algorithm is parametrized by the RGB base colors. Each of the base colors has it’s RGB-triplet and class. Base color classes are three: green leaf part, brown leaf part or background.
+The algorithm works pixel-wise, meaning that for every pixel it performs the following steps:
+-  calculates the distance of a pixel RGB-triplet to each of the base colors
+-  selects, to which of the base colors the pixel is closest
+-  assigns the class of the closest base color to the pixel
+After assigning the class to every image pixel, the algorithm produces an image mask. An example of such mask can be seen in Figure in the summary. 
+Note to code: For simplicity, color distances calculation is implemented using k-means algorithm. But we do not really use k-means algo to determine clusters centers, we define them by the base colors.
+
+# Algorithm performance
+Final method correctness verification is done by comparing the method’s performance against the experts’ results. The algorithm gave the same class or differed by one class in 75% of cases and differs by at most 2 classes in 93% of cases. This number is calculated by comparing the algorithm’s results with the class assigned by the 25 experts. Furthermore, to evaluate algorithm correctness, we compared the algorithm’s results pixel-wise to the leaf segmentation assigned by the expert, resulting in the 89% +- 4% overlap averaged over 10 images.
 
 # Files content
 - analyze_leafs.ipynb: main notebook for reading the images from your directory, predicting pixel classes, displaying the results and generate the notebook with statistics about each leaf.
