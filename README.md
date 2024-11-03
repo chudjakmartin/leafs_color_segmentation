@@ -13,18 +13,25 @@ colors: Base colors are specified here. Distances of pixel colors to each of the
 group_colors_to_display: colors by which the pixels groups are displayed
 base_images_dir: dir where source images are stored
 image_size_cm: size of image in squared centimeters
-- N_green_classes: Determines to how many classes is order of roothing splited
+- N_green_classes: Determines, how many classes, the order of roothing is split to
 leaf_utils.py: Main functions
 calculate_pixel_classes: Pixel classes are determined in this function.
 calculate_image_statistics: Calculate image statistics 
 
 # How to use
 
-If you want to use the provided code for your own purposes, create conda enviroment from yaml file, set constants in the leaf_constants.py file and you are ready to use. If you are new to python, you may follow following instructions:
-- Install Anaconda (see e.g. this video)
-- Open Anaconda Powershell Prompt and change directory to where you want to have your files and code which analyze them. (use command cd your_dir_path)
-- Download this repository. Use git clone … or simply download all files from this repository to your local directory.
-- Create Anaconda env in from yaml file (see e.g. this video) type jupyter notebook to your conda power shell and you should be ready to use
+If you want to use the provided code for your own purposes, create conda enviroment from yaml file, set constants in the leaf_constants.py file and you are ready to use. If you are new to python, you may follow the following instructions:
+- Install Anaconda (see e.g. this [video](https://www.youtube.com/watch?v=UTqOXwAi1pE)).
+- Download this repository. If you know how to use git, simply use git clone command. Otherwise, download this repository as zip file to your local directory and extract it.
+![download repo files](images_for_readme/download_repo.PNG)
+- Open Anaconda Powershell Prompt (it was installed along Anaconda program) and change the directory to where you want to have your files and code, which analyze them. Use command cd your_dir_path. Type “cd E:/2024_listy/leafs_color_segmentation” and hit Enter as shown in the screenshot.
+![change directory](images_for_readme/change_directory.PNG)
+- Create Anaconda env from yaml file using commands below. This contains all python packages in the correct versions for the code to work properly.
+![create enviroment](images_for_readme/create_env.PNG)
+- Activate newly-created environment.
+![activate enviroment](images_for_readme/activate_env.PNG)
+- Type "jupyter notebook" to your conda power shell and you should be ready to use the code.
+![run jupyter notebook](images_for_readme/run_jupyter_notebook.PNG)
 
 # Excel with leaf's statistics
 Function calculate_image_statistics calculates statistics which are than exported to the excel file. Excel has the following columns
