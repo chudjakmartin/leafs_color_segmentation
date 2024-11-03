@@ -1,6 +1,6 @@
 # Summary
 This repository contains code for the identification of healthy and rooted regions of the horse chestnut leaf images. The implemented algorithm assigns one of rotten healthy or background classes to each of the image pixels independently. A sample algorithm result is shown in the picture below.
-![plot](leaf_sample_image.PNG)
+![sample_leaf_segmentation](images_for_readme/leaf_sample_image.PNG)
 
 # Algorithm description
 For each pixel, it calculates distances to each of predefined colors.
