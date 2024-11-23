@@ -29,7 +29,13 @@ Final method correctness verification is done by comparing the method’s perfor
 
 # How to use
 
-If you want to use the provided code for your own purposes, create conda enviroment from yaml file, set constants in the leaf_constants.py file and you are ready to use. If you are new to python, you may follow the following instructions:
+If you want to use the provided code for your own purposes, create conda enviroment from yaml file, or install them manually. Versions of the main libraries are the following:
+- numpy=1.26.4
+- pandas=2.2.1
+- pillow=10.3.0
+- pymupdf==1.24.5
+- scipy=1.13.1
+After installing the libraries, set constants in the leaf_constants.py file and you are ready to use. If you are new to python, you may follow the following instructions:
 - Install Anaconda (see e.g. this [video](https://www.youtube.com/watch?v=UTqOXwAi1pE)).
 - Download this repository. If you know how to use git, simply use git clone command. Otherwise, download this repository as zip file to your local directory and extract it.
 ![download repo files](images_for_readme/download_repo.PNG)
