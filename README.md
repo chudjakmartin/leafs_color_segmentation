@@ -1,5 +1,5 @@
 # Summary
-This repository contains code for the identification of healthy and rooted regions of the horse chestnut leaf images. The implemented algorithm assigns one of rotten healthy or background classes to each of the image pixels independently. A sample algorithm result is shown in the picture below.
+This repository contains code for the identification of healthy and rooted regions of the horse chestnut leaf images. The implemented algorithm assigns one of the rotten, healthy, and background classes to each of the image pixels independently. A sample algorithm result is shown in the picture below.
 ![sample_leaf_segmentation](images_for_readme/leaf_sample_image.PNG)
 
 # Algorithm description
@@ -16,16 +16,16 @@ Note to code: For simplicity, color distances calculation is implemented using k
 Final method correctness verification is done by comparing the method’s performance against the experts’ results. The algorithm gave the same class or differed by one class in 75% of cases and differs by at most 2 classes in 93% of cases. This number is calculated by comparing the algorithm’s results with the class assigned by the 25 experts. Furthermore, to evaluate algorithm correctness, we compared the algorithm’s results pixel-wise to the leaf segmentation assigned by the expert, resulting in the 89% +- 4% overlap averaged over 10 images.
 
 # Files content
-- analyze_leafs.ipynb: main notebook for reading the images from your directory, predicting pixel classes, displaying the results and generate the notebook with statistics about each leaf.
+- analyze_leafs.ipynb: main notebook for reading the images from your directory, predicting pixel classes, displaying the results, and generating the excel with statistics about each leaf.
 - leaf_constants.py: Algorithm constants
-colors: Base colors are specified here. Distances of pixel colors to each of these colors in RGB space is calculated and pixel classes is determined based on to which of base colors it is closest.
-group_colors_to_display: colors by which the pixels groups are displayed
-base_images_dir: dir where source images are stored
-image_size_cm: size of image in squared centimeters
-- N_green_classes: Determines, how many classes, the order of roothing is split to
-leaf_utils.py: Main functions
-calculate_pixel_classes: Pixel classes are determined in this function.
-calculate_image_statistics: Calculate image statistics 
+    - colors: Base colors are specified here. Distances of pixel colors to each of these colors in RGB space are calculated and pixel classes are determined based on  which of the base colors it is closest to.
+    - group_colors_to_display: Colors by which the pixels groups are displayed.
+    - base_images_dir: Directory where source images are stored.
+    - image_size_cm: Size of a leaf image in squared centimeters.
+    - N_green_classes: Determines, how many classes, the order of roothing is split to.
+- leaf_utils.py: Main functions
+    - calculate_pixel_classes: Pixel classes are determined in this function.
+    - calculate_image_statistics: Calculate image statistics.
 
 # How to use
 
@@ -45,6 +45,6 @@ If you want to use the provided code for your own purposes, create conda envirom
 # Excel with leaf's statistics
 Function calculate_image_statistics calculates statistics which are than exported to the excel file. Excel has the following columns
 - filename: str: name of file
-- green_ratio: float from [0, 1] - what part of leaf is assigned green class
-- leaf_ratio: float from [0, 1] - what part of image is leaf (i.e. pixels which are not background)
+- green_ratio: float from [0, 1] - what part of the leaf is the green class assigned to.
+- leaf_ratio: float from [0, 1] - what part of the image is leaf (i.e. pixels which are not the background).
 - leaf_area_cm: Area of leaf in cm^2
