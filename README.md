@@ -35,6 +35,7 @@ If you want to use the provided code for your own purposes, create conda envirom
 - pillow=10.3.0
 - pymupdf==1.24.5
 - scipy=1.13.1
+
 After installing the libraries, set constants in the leaf_constants.py file and you are ready to use. If you are new to python, you may follow the following instructions:
 - Install Anaconda (see e.g. this [video](https://www.youtube.com/watch?v=UTqOXwAi1pE)).
 - Download this repository. If you know how to use git, simply use git clone command. Otherwise, download this repository as zip file to your local directory and extract it.
